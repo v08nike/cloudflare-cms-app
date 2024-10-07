@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
+  branch: main # Required; default branch
+  auth:
+    clientId: Ov23liETZqfpyhg21ITb
+    clientSecret: 8da99bdd5c3d7530fde2643141f58928a5ff8a6b
+media_folder: "public/uploads" # Folder where media files will be stored
+collections:
+  - name: "posts" # Used in routes like /admin/collections/posts
+    label: "Posts"
+    folder: "posts" # The path to the folder where posts are stored
+    create: true # Allow users to create new posts
+    slug: "{{slug}}" # Custom URL Slug for each post
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
