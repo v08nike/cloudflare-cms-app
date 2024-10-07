@@ -2,6 +2,9 @@ backend:
   name: github
   repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
   branch: main # Required; default branch
+  site_domain: https://cloudflare-cms-app.pages.dev/
+  base_url: https://cloudflare-cms-app.pages.dev/
+  auth_endpoint: /api/auth
   auth:
     provider: github
     clientId: Ov23li55q7zj0NT2kUnU
