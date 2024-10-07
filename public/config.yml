@@ -1,5 +1,5 @@
 backend:
-  name: cloudflare-cms-app
+  name: github
   repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
   branch: main # Required; default branch
   auth:
