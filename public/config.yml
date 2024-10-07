@@ -1,8 +1,9 @@
 backend:
-  name: github
+  name: cloudflare-cms-app
   repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
   branch: main # Required; default branch
   auth:
+    provider: github
     clientId: Ov23li55q7zj0NT2kUnU
     clientSecret: add991174d8f1ae72e140877961180429510439f
 media_folder: "public/uploads" # Folder where media files will be stored
