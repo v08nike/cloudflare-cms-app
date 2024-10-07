@@ -1,11 +1,13 @@
 import dynamic from "next/dynamic";
 
-const CMS = dynamic(() => import("decap-cms"), { ssr: false });
+const CMS = dynamic(() => import("decap-cms").then((mod: any) => mod.CMS), {
+  ssr: false,
+  loading: () => <p>Loading...</p>, // Fallback loading state
+});
 
 export default function Home() {
   return (
-    <div>
-      <h1>My Next.js App with Decap CMS</h1>
+    <div className="flex items-center justify-center">
       <CMS />
     </div>
   );
