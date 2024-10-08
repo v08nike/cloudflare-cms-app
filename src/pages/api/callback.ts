@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest } from "next";
 
 export const runtime = 'edge';
 
@@ -19,17 +19,17 @@ function renderBody(status: string, content: object): string {
   return html;
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest) {
   const client_id = process.env.GITHUB_ID;
   const client_secret = process.env.GITHUB_SECRET;
 
   if (!client_id || !client_secret) {
-    return res
-      .status(500)
-      .json({ message: "GitHub Client ID or Secret not provided" });
+    return new Response(JSON.stringify({ message: "GitHub Client ID or Secret not provided" }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   try {
@@ -37,9 +37,12 @@ export default async function handler(
     const code = url.searchParams.get("code");
 
     if (!code) {
-      return res
-        .status(400)
-        .json({ message: "Code not provided in the callback URL" });
+      return new Response(JSON.stringify({ message: "Code not provided in the callback URL" }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
     }
 
     const tokenResponse = await fetch(
@@ -58,17 +61,32 @@ export default async function handler(
     const tokenData: any = await tokenResponse.json();
 
     if (tokenData.error) {
-      res.status(401).send(renderBody("error", tokenData));
-      return;
+      const errorBody = renderBody("error", tokenData);
+      return new Response(errorBody, {
+        status: 401,
+        headers: {
+          'Content-Type': 'text/html',
+        },
+      });
     }
 
     const token = tokenData.access_token;
     const provider = "github";
     const responseBody = renderBody("success", { token, provider });
 
-    res.status(200).send(responseBody);
+    return new Response(responseBody, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/html',
+      },
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: (error as Error).message });
+    return new Response(JSON.stringify({ message: (error as Error).message }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }

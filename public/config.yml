@@ -2,8 +2,8 @@ backend:
   name: github
   repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
   branch: main # Required; default branch
-  site_domain: https://cloudflare-cms-app.pages.dev/
-  base_url: https://cloudflare-cms-app.pages.dev/
+  site_domain: http://localhost:3001
+  base_url: http://localhost:3001
   auth_endpoint: /api/auth
   auth_scope: repo
 media_folder: "public/uploads" # Folder where media files will be stored

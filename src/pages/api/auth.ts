@@ -1,12 +1,17 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest } from 'next';
 
 export const runtime = 'edge';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest) {
   const client_id = process.env.GITHUB_ID;
 
   if (!client_id) {
-    return res.status(500).json({ message: 'GitHub Client ID not provided' });
+    return new Response(JSON.stringify({ message: 'GitHub Client ID not provided' }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   try {
@@ -15,12 +20,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     redirectUrl.searchParams.set('client_id', client_id);
     redirectUrl.searchParams.set('redirect_uri', `${url.origin}/api/callback`);
     redirectUrl.searchParams.set('scope', 'repo user');
-    redirectUrl.searchParams.set('state', crypto.randomUUID()); // Using crypto.randomUUID() for a state token
+    redirectUrl.searchParams.set('state', crypto.randomUUID());
 
-    // Redirect to GitHub OAuth login page
-    res.redirect(redirectUrl.href);
+    // Return a redirect response
+    return Response.redirect(redirectUrl.href, 302);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: (error as Error).message });
+    return new Response(JSON.stringify({ message: (error as Error).message }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 }
