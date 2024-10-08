@@ -5,6 +5,8 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
+export const runtime = 'edge';
+
 const postsDirectory = path.join(process.cwd(), "posts");
 
 interface PostData {

@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+export const runtime = 'edge';
+
 function renderBody(status: string, content: object): string {
   const html = `
     <script>
