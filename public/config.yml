@@ -4,11 +4,9 @@ backend:
   branch: main # Required; default branch
   site_domain: https://cloudflare-cms-app.pages.dev/
   base_url: https://cloudflare-cms-app.pages.dev/
-  auth:
-    provider: github
-    clientId: Ov23li55q7zj0NT2kUnU
-    clientSecret: add991174d8f1ae72e140877961180429510439f
+  auth_endpoint: /api/auth
 media_folder: "public/uploads" # Folder where media files will be stored
+public_folder: "public/"
 collections:
   - name: "posts" # Used in routes like /admin/collections/posts
     label: "Posts"
