@@ -5,7 +5,9 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-export const runtime = 'edge';
+export const config = {
+  runtime: "nodejs",
+};
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
