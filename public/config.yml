@@ -2,8 +2,8 @@ backend:
   name: github
   repo: v08nike/cloudflare-cms-app # Required; GitHub repo name
   branch: main # Required; default branch
-  site_domain: http://localhost:3001
-  base_url: http://localhost:3001
+  site_domain: http://localhost:3000
+  base_url: http://localhost:3000
   auth_endpoint: /api/auth
   auth_scope: repo
 media_folder: "public/uploads" # Folder where media files will be stored
@@ -16,4 +16,7 @@ collections:
     slug: "{{slug}}" # Custom URL Slug for each post
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - { label: "Created At", name: "created_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
+      - { label: "Updated At", name: "updated_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
