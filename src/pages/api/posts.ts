@@ -1,11 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest } from "next/server";
 
 export const runtime = 'edge';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextRequest) {
   try {
     const repoOwner = process.env.GITHUB_REPO_OWNER;
     const repoName = process.env.GITHUB_REPO_NAME;
@@ -21,7 +18,7 @@ export default async function handler(
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch posts from GitHub");
+      return new Response(JSON.stringify({ message: "Failed to fetch posts from GitHub" }), { status: 500 });
     }
 
     const files: any = await response.json();
@@ -43,9 +40,9 @@ export default async function handler(
       })
     );
 
-    res.status(200).json(posts);
+    return new Response(JSON.stringify(posts), { status: 200 });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to load posts" });
+    return new Response(JSON.stringify({ message: "Failed to load posts" }), { status: 500 });
   }
 }
