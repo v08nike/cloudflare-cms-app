@@ -17,6 +17,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Category", name: "category", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: true }
       - { label: "Body", name: "body", widget: "markdown", required: true }
       - { label: "Created At", name: "created_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
       - { label: "Updated At", name: "updated_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
