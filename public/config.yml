@@ -6,7 +6,7 @@ backend:
   base_url: http://localhost:3000
   auth_endpoint: /api/auth
   auth_scope: repo
-media_folder: "public/uploads" # Folder where media files will be stored
+media_folder: "public/public" # Folder where media files will be stored
 public_folder: "public/"
 collections:
   - name: "posts" # Used in routes like /admin/collections/posts
@@ -16,8 +16,28 @@ collections:
     slug: "{{slug}}" # Custom URL Slug for each post
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Author Name", name: "author", widget: "string", required: false }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["Trend", "Fashion", "Insights", "Sales"],
+        }
       - { label: "Image", name: "image", widget: "image", required: true }
       - { label: "Body", name: "body", widget: "markdown", required: true }
-      - { label: "Created At", name: "created_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
-      - { label: "Updated At", name: "updated_at", widget: "datetime", required: true, default: "now", date_format: "YYYY-MM-DD HH:mm:ss" }
+      - {
+          label: "Created At",
+          name: "created_at",
+          widget: "datetime",
+          required: true,
+          default: "now",
+          date_format: "YYYY-MM-DD HH:mm:ss",
+        }
+      - {
+          label: "Updated At",
+          name: "updated_at",
+          widget: "datetime",
+          required: true,
+          default: "now",
+          date_format: "YYYY-MM-DD HH:mm:ss",
+        }
