@@ -1,5 +1,5 @@
 ---
-title: "Unveiling the Stellar Fashion Collection: Inspired by Dune Part Two"
+title: "Unveiling the Stellar Fashion Collection: Inspired by Dune Part Two 123"
 category: Fashion
 image: public/dania-siddiqui-gold-mettalic-kaftan-with-embroidered-belt-238bb8a5e30d95e7.webp
 created_at: 2024-10-16 00:00:00
