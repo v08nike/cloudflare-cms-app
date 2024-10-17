@@ -1,6 +1,6 @@
 ---
 title: Summer Essential String Bag Collection
-author: Ted
+author: ""
 category: Trend
 image: https://cdn.jellibeans.com/images/collections/cHrUs16Yods_PFVNk4yiL.png?width=1080}
 created_at: 2024-10-17 00:00:00
