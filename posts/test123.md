@@ -1,5 +1,5 @@
 ---
-title: "Unveiling the Stellar Fashion Collection: Inspired by Dune Part Two"
+title: "Unveiling the Stellar Fashion Collection: Inspired by Dune Part Two 1"
 category: Fashion
 image: public/4n20synzqsfvlhu5y3r7z.png
 created_at: 2024-10-15 00:00:00
